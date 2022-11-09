@@ -6,8 +6,6 @@ const { token } = storage.getAuthStorage();
 
 const configApi = axios.create();
 
-console.log(import.meta.env.VITE_API_URL);
-
 configApi.defaults.baseURL = import.meta.env.VITE_API_URL;
 
 configApi.defaults.headers.common["Authorization"] = `Bearer ${token}`;
