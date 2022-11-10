@@ -6,15 +6,16 @@ type Values = {
   display: boolean,
   handleShowModal: (modal: ReactElement) => void,
   handleCloseModal: (e: any) => void,
+  children: ReactElement;
 }
 
 const ModalContext = createContext<Values>({} as Values);
 
 export const ModalProvider = ({ children }: ReactProps) => {
-  const { display, handleShowModal, handleCloseModal } = hook();
+  const { display, handleShowModal, handleCloseModal, ["children"]: reactChildren } = hook();
 
   return (
-    <ModalContext.Provider value={{ display, handleShowModal, handleCloseModal }}>
+    <ModalContext.Provider value={{ display, handleShowModal, handleCloseModal, children: reactChildren }}>
       {children}
     </ModalContext.Provider>
   );

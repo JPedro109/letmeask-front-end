@@ -3,6 +3,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { BrowserRouter } from "react-router-dom";
 
+import { Modal } from "./components/Modal";
+
 import { AppContainer } from "./styles/app";
 import { GlobalStyle } from './styles/global';
 
@@ -21,6 +23,7 @@ const App = () => {
           <AuthProvider>
             <AppContainer>
               <AppRoutes />
+              <Modal />
             </AppContainer>
           </AuthProvider>
         </ModalProvider>
