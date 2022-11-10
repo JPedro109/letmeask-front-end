@@ -17,6 +17,7 @@ import { UpdatePassword } from "./pages/UpdatePassword";
 import { DeleteUser } from "./pages/DeleteUser";
 import { EnterRoom } from "./pages/EnterRoom";
 import { Room } from "./pages/Room";
+import { MyQuestions } from "./pages/MyQuestions";
 
 export const AppRoutes = () => {
     return (
@@ -72,6 +73,10 @@ export const AppRoutes = () => {
 
                 <Route path="/room/:code" element={<PrivateRoute />} >
                     <Route path="/room/:code" element={<Room />} />
+                </Route>
+
+                <Route path="/my-questions" element={<PrivateRoute />} >
+                    <Route path="/my-questions" element={<MyQuestions />} />
                 </Route>
                 
                 <Route path="/*" element={<PageNotFound />} />
