@@ -15,6 +15,7 @@ import { VerifyEmailUpdate } from "./pages/VerifyEmailUpdate";
 import { UpdateName } from "./pages/UpdateName";
 import { UpdatePassword } from "./pages/UpdatePassword";
 import { DeleteUser } from "./pages/DeleteUser";
+import { EnterRoom } from "./pages/EnterRoom";
 
 export const AppRoutes = () => {
     return (
@@ -64,6 +65,9 @@ export const AppRoutes = () => {
                     <Route path="/delete-user" element={<DeleteUser />} />
                 </Route>
 
+                <Route path="/enter-room" element={<PrivateRoute />} >
+                    <Route path="/enter-room" element={<EnterRoom />} />
+                </Route>
 
                 <Route path="/*" element={<PageNotFound />} />
             </Routes>
