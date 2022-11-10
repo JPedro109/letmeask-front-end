@@ -48,10 +48,10 @@ export const Login = () => {
     
             const token = data.response.accessToken;
 
-            // storage.addAuthStorage(token); TODO - uncomment after create create room page
-            // api.addTokenInAuthorizationHeader(token); TODO - uncomment after create create room page
+            storage.addAuthStorage(token);
+            api.addTokenInAuthorizationHeader(token);
 
-            // setAuthenticated(true); TODO - uncomment after create create room page
+            setAuthenticated(true); 
           })
           .catch(({ response }) =>
             response
