@@ -29,17 +29,17 @@ export const EnterRoom = () => {
 
         setButtonChidren(<LoadingGif />);
 
-        // await api
-        //     .configApi
-        //     .get(`/room/${roomCode.value}`)
-        //     .then(({ data }) => (
-        //         data.response ? navigate(`/room/${roomCode.value}`) : notification.error("Essa sala não existe")
-        //     ))
-        //     .catch(({ response }) =>
-        //         response
-        //             ? notification.error(response.data.message)
-        //             : notification.error("Erro no Servidor, tente novamente mais tarde")
-        //     ); TODO
+        await api
+            .configApi
+            .get(`/room/${roomCode.value}`)
+            .then(({ data }) => (
+                data.response ? navigate(`/room/${roomCode.value}`) : notification.error("Essa sala não existe")
+            ))
+            .catch(({ response }) =>
+                response
+                    ? notification.error(response.data.message)
+                    : notification.error("Erro no Servidor, tente novamente mais tarde")
+            );
 
         setButtonChidren("Entrar na Sala");
     }

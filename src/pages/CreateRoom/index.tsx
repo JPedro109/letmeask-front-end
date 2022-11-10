@@ -30,20 +30,20 @@ export const CreateRoom = () => {
 
     setButtonChildren(<LoadingGif />);
 
-    // await api
-    //   .configApi
-    //   .post(`/room`, {
-    //     name: roomName.value,
-    //   })
-    //   .then(({ data }) => {
-    //     setFormValues({});
-    //     navigate(`/room/${data.response.code}`);
-    //   })
-    //   .catch(({ response }) =>
-    //     response
-    //       ? notification.error(response.data.message)
-    //       : notification.error("Erro no Servidor, tente novamente")
-    //   ); TODO
+    await api
+      .configApi
+      .post(`/room`, {
+        name: roomName.value,
+      })
+      .then(({ data }) => {
+        setFormValues({});
+        navigate(`/room/${data.response.code}`);
+      })
+      .catch(({ response }) =>
+        response
+          ? notification.error(response.data.message)
+          : notification.error("Erro no Servidor, tente novamente")
+      );
 
     setButtonChildren("Criar Sala");
   };
