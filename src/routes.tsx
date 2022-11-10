@@ -10,6 +10,11 @@ import { CreateRoom } from "./pages/CreateRoom";
 import { RecoverPassword } from "./pages/RecoverPassword";
 import { PageNotFound } from "./pages/PageNotFound";
 import { VerifyEmail } from "./pages/VerifyEmail";
+import { UpdateEmail } from "./pages/UpdateEmail";
+import { VerifyEmailUpdate } from "./pages/VerifyEmailUpdate";
+import { UpdateName } from "./pages/UpdateName";
+import { UpdatePassword } from "./pages/UpdatePassword";
+import { DeleteUser } from "./pages/DeleteUser";
 
 export const AppRoutes = () => {
     return (
@@ -38,6 +43,27 @@ export const AppRoutes = () => {
                 <Route path="/create-room" element={<PrivateRoute />} >
                     <Route path="/create-room" element={<CreateRoom />} />
                 </Route>
+
+                <Route path="/update-email" element={<PrivateRoute />} >
+                    <Route path="/update-email" element={<UpdateEmail />} />
+                </Route>
+
+                <Route path="/verify-update-email" element={<PrivateRoute />} >
+                    <Route path="/verify-update-email" element={<VerifyEmailUpdate />} />
+                </Route>
+
+                <Route path="/update-name" element={<PrivateRoute />} >
+                    <Route path="/update-name" element={<UpdateName />} />
+                </Route>
+
+                <Route path="/update-password" element={<PrivateRoute />} >
+                    <Route path="/update-password" element={<UpdatePassword />} />
+                </Route>
+
+                <Route path="/delete-user" element={<PrivateRoute />} >
+                    <Route path="/delete-user" element={<DeleteUser />} />
+                </Route>
+
 
                 <Route path="/*" element={<PageNotFound />} />
             </Routes>
