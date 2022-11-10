@@ -1,13 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 
-import { PublicRoute } from "./components/PublicRoute";
+import { PublicRoute } from "./components/PublicRoute/index";
+import { PrivateRoute } from "./components/PrivateRoute/index";
 
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
+import { ForgetPassword } from "./pages/ForgetPassword";
+import { CreateRoom } from "./pages/CreateRoom";
+import { RecoverPassword } from "./pages/RecoverPassword";
 import { PageNotFound } from "./pages/PageNotFound";
 import { VerifyEmail } from "./pages/VerifyEmail";
-import { ForgetPassword } from "./pages/ForgetPassword";
-import { RecoverPassword } from "./pages/RecoverPassword";
 
 export const AppRoutes = () => {
     return (
@@ -31,6 +33,10 @@ export const AppRoutes = () => {
 
                 <Route path="/password-recover" element={<PublicRoute />} >
                     <Route path="/password-recover" element={<RecoverPassword />} />
+                </Route>
+
+                <Route path="/create-room" element={<PrivateRoute />} >
+                    <Route path="/create-room" element={<CreateRoom />} />
                 </Route>
 
                 <Route path="/*" element={<PageNotFound />} />
