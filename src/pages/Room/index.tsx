@@ -12,6 +12,8 @@ import { api } from "../../services/api";
 
 import { QuestionTypes } from "../../types";
 import { notification } from '../../utils/notification';
+import { LoadingBigGif } from '../../components/LoadingBigGif';
+import { ContainerBigGif } from '../../components/ContainerBigGif';
 
 export const Room = () => {
     const { code } = useParams();
@@ -25,7 +27,7 @@ export const Room = () => {
         let mounted = true;
 
         const handleRoomName = async () => {
-            if(mounted) {
+            if (mounted) {
                 await api
                     .configApi
                     .get(`/room/${code}`, {
@@ -42,15 +44,13 @@ export const Room = () => {
         }
 
         const handleAdmin = async () => {
-            if (mounted) {
-                await api
-                    .configApi
-                    .get(`/room-code`)
-                    .then(({ data }) => data.response === code ? setAdmin(true) : null)
-                    .catch(() =>
-                        console.log("Erro no servidor")
-                    );
-            }
+            await api
+                .configApi
+                .get(`/room-code`)
+                .then(({ data }) => data.response === code ? setAdmin(true) : null)
+                .catch(() =>
+                    console.log("Erro no servidor")
+                );
         };
 
         const fetchQuestions = async () => {
@@ -67,16 +67,21 @@ export const Room = () => {
 
         if (initialLoading) {
             handleAdmin();
-            setInitialLoading(false);
+            handleRoomName();
+            fetchQuestions();
+            setTimeout(() => setInitialLoading(false), 600);
         }
 
-        handleRoomName();
-        fetchQuestions();
+        setTimeout(() => {
+            handleRoomName();
+            fetchQuestions();
+        }, 500);
 
         return () => {
             mounted = false;
             return;
         }
+
     }, [questions, code, navigate, notification]);
 
     return (
@@ -88,7 +93,12 @@ export const Room = () => {
                 {!admin ? <QuestionContainer code={code} /> : null}
 
                 {
-                    questions.length === 0 ? <Information admin={admin} />
+                    initialLoading ? (
+                        <div style={{ display: "flex", justifyContent: "center", marginTop: "100px" }}>
+                            <LoadingBigGif></LoadingBigGif>
+                        </div>
+                    ) : (
+                        questions.length === 0 ? <Information admin={admin} />
                         : questions.map((question: QuestionTypes) => (
                             (
                                 <QuestionComponent
@@ -98,6 +108,7 @@ export const Room = () => {
                                 />
                             )
                         ))
+                    )
                 }
 
             </ContainerPage>
