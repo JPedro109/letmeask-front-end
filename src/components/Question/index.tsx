@@ -6,9 +6,6 @@ import { QuestionTypes } from "../../types/index";
 
 import { Footer } from "./Footer";
 import { ContainerResponseField } from "./ContainerResponseField";
-import { Modal } from '../Modal';
-
-import { useModal } from '../../providers/ModalProvider';
 
 type QuestionComponentTypes = {
     questionObject: QuestionTypes;
