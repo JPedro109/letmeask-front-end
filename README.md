@@ -18,16 +18,20 @@
 
 # Tecnologias
 - React JS
+- Vite
 - Create React App
 - Styled Components
 - Typescript
 
 # Execução
-Você precisa ter instalado em sua máquina o Node, GIT e o pacote Yarn instalado de forma global, após clonar o projeto, use o exemplo para definir as variáveis de ambiente e digite os seguintes comandos: 
+
+Para executar o projeto você deve ter o node e o pacote yarn instalados, após clonar o projeto, use o exemplo para definir as variáveis de ambiente e digite os seguintes comandos:
 
 ```sh
-  yarn install
+ yarn
 ```
+Depois para rodar o projeto: 
+
 ```sh
-  yarn dev
+ yarn dev
 ```
