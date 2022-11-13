@@ -8,6 +8,7 @@ import { useModal } from "../../../providers/ModalProvider";
 
 import { QuestionTypes } from "../../../types/index";
 import { DeleteQuestionModal } from '../DeleteQuestionModal';
+import { useLocation } from "react-router-dom";
 
 type FooterTypes = {
     question: QuestionTypes;
@@ -18,6 +19,7 @@ type FooterTypes = {
 export const Footer = ({ question, admin, handleShowResponseField }: FooterTypes) => {
     const { response, id, name } = question;
     const { handleShowModal } = useModal();
+    const { pathname } = useLocation();
     const handleDeleteQuestion = async () => handleShowModal(<DeleteQuestionModal id={id} />);
 
     return (
@@ -36,7 +38,7 @@ export const Footer = ({ question, admin, handleShowResponseField }: FooterTypes
                                 <MdOutlineDelete onClick={() => handleDeleteQuestion()} />
                             </>
                         )
-                        : <MdOutlineDelete onClick={() => handleDeleteQuestion()} />
+                        : pathname === "/my-questions" ? <MdOutlineDelete onClick={() => handleDeleteQuestion()} /> : null 
                 }
             </div>
         </FooterStyle>
