@@ -75,7 +75,7 @@ export const Room = () => {
         setTimeout(() => {
             handleRoomName();
             fetchQuestions();
-        }, 500);
+        }, 800);
 
         return () => {
             mounted = false;
