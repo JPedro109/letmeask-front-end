@@ -19,7 +19,7 @@ export const EnterRoom = () => {
     const { handleLogout } = useAuth();
     const navigate = useNavigate();
     const [formValues, setFormValues] = useState({});
-    const [buttonChildren, setButtonChidren] = useState<string | ReactElement>("Entra na Sala");
+    const [buttonChildren, setButtonChidren] = useState<string | ReactElement>("Entrar na Sala");
     const handleEnterRoom = async (e: any) => {
         e.preventDefault();
 
