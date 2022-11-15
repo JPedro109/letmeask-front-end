@@ -35,10 +35,12 @@ export const Footer = ({ question, admin, handleShowResponseField }: FooterTypes
                         ? (
                             <>
                                 <MdOutlineQuestionAnswer onClick={() => handleShowResponseField()} />
-                                <MdOutlineDelete onClick={() => handleDeleteQuestion()} />
                             </>
                         )
                         : pathname === "/my-questions" ? <MdOutlineDelete onClick={() => handleDeleteQuestion()} /> : null 
+                }
+                {
+                    admin ? <MdOutlineDelete onClick={() => handleDeleteQuestion()} /> : null
                 }
             </div>
         </FooterStyle>
