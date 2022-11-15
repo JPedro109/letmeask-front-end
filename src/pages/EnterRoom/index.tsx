@@ -50,7 +50,7 @@ export const EnterRoom = () => {
                 <Form onSubmit={handleEnterRoom}>
                     <Logo />
 
-                    <h2>Entra na Sala</h2>
+                    <h2>Entrar na Sala</h2>
 
                     <FormInput
                         type="text"
