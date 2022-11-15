@@ -28,9 +28,6 @@ export const DeleteQuestionModal = ({ id }: QuestionModalTypes) => {
           ? notification.error(response.data.message)
           : notification.error("Erro no Servidor")
       );
-
-    console.log(id);
-    
   }
 
   return (
