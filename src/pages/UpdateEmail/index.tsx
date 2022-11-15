@@ -35,7 +35,7 @@ export const UpdateEmail = () => {
           })
           .then(() => {
             setFormValues({})
-            notification.success("E-mail atualizado com sucesso");
+            notification.success("O link de atualização de email foi enviado para seu email, ele é válido por alguns minutos, não esqueça de verificar sua caixa de spam");
           })
           .catch(({ response }) =>
             response
