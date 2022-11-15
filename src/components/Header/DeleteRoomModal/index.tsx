@@ -24,7 +24,7 @@ export const DeleteRoomModal = ({ code }: RoomModalTypes) => {
             .configApi
             .delete(`/room/${code}`)
             .then(() => {
-                notification.success("Sala delata com sucesso");
+                notification.success("Sala deletada com sucesso");
                 navigate("/create-room");
             })
             .catch(({ response }) =>
