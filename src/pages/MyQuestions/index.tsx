@@ -24,8 +24,8 @@ export const MyQuestions = () => {
             const fetchQuestions = async () => {
                 await api
                     .configApi
-                    .get(`/question`)
-                    .then(({ data }) => (setQuestions(data.response)))
+                    .get(`/questions`)
+                    .then(({ data }) => (setQuestions(data)))
                     .catch(() => {
                         notification.error("Erro no servidor, as perguntas não podem ser apresentadas");
                     });
@@ -67,7 +67,7 @@ export const MyQuestions = () => {
                                 (
                                     <QuestionComponent
                                         key={question.id}
-                                        questionObject={question}
+                                        questionObject={question} 
                                     />
                                 )
                             ))

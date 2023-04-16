@@ -41,10 +41,10 @@ export const UpdatePassword = () => {
   
         await api
           .configApi
-          .patch(`/user/password/update`, {
-            passwordCurrent: passwordCurrent.value,
-            password: newPassword.value,
-            passwordConfirm: newPasswordConfirm.value,
+          .patch(`/users/password`, {
+            password: passwordCurrent.value,
+            newPassword: newPassword.value,
+            newPasswordConfirm: newPasswordConfirm.value,
           })
           .then(() => {
             setFormValues({});

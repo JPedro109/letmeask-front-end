@@ -39,14 +39,14 @@ export const Login = () => {
         setButtonChildren(<LoadingGif />);
     
         await api.configApi
-          .post("/user/login", {
+          .post("/users/login", {
             email: email.value,
             password: password.value,
           })
           .then(({ data }) => {
             setFormValues({});
     
-            const token = data.response.accessToken;
+            const token = data;
 
             storage.addAuthStorage(token);
             api.addTokenInAuthorizationHeader(token);

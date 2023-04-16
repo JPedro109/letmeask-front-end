@@ -3,8 +3,8 @@ import { InformationContainer } from '../../../components/InformationContainer';
 import EmptyQuestions from "../../../assets/images/empty-questions.svg";
 
 type InformationTypes = {
-    admin: boolean;
-}
+    admin: boolean | null;
+} 
 
 export const Information = ({ admin }: InformationTypes) => {
     return (

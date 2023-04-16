@@ -25,7 +25,8 @@ export const ContainerResponseField = ({ question, display, handleCloseResponseF
 
         await api
           .configApi
-          .post(`/response/${code}/${id}`, {
+          .post(`/responses`, {
+              questionId: id,
               response: newResponse
           })
             .catch(({ response }) =>

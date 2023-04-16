@@ -17,7 +17,7 @@ export const VerifyEmail = () => {
       const handleVerifyEmail = async () => {
         await api
           .configApi
-          .post(`/verify-email${search}`)
+          .patch(`/users/verify-email${search}`)
           .then(() => notification.success("E-mail verificado com sucesso"))
           .catch(({ response }) =>
             response

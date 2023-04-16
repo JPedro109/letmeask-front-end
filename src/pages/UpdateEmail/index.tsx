@@ -30,7 +30,7 @@ export const UpdateEmail = () => {
     
         await api
           .configApi
-          .post("/user/email/send-token-update-email", {
+          .post("/users/send-email-update-link", {
             email: email.value,
           })
           .then(() => {

@@ -31,9 +31,9 @@ export const EnterRoom = () => {
 
         await api
             .configApi
-            .get(`/room/${roomCode.value}`)
+            .get(`/rooms/exists/${roomCode.value}`)
             .then(({ data }) => (
-                data.response ? navigate(`/room/${roomCode.value}`) : notification.error("Essa sala não existe")
+                data ? navigate(`/room/${roomCode.value}`) : notification.error("Essa sala não existe")
             ))
             .catch(({ response }) =>
                 response

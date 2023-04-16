@@ -13,7 +13,7 @@ import { useModal } from '../../providers/ModalProvider';
 import { useAuth } from '../../providers/AuthProvider';
 
 type HeaderTypes = {
-    admin?: boolean
+    admin?: boolean | null
 }
 
 export const Header = ({ admin }: HeaderTypes) => {

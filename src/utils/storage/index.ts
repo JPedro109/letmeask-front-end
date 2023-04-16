@@ -1,5 +1,5 @@
 const addAuthStorage = (token: string): void => {
-    const tokenExpiryTime = new Date().setHours(new Date().getHours() + 1).toString();
+    const tokenExpiryTime = new Date().setMinutes(86400).toString();
     localStorage.setItem("tokenLetmeask", token);
     localStorage.setItem("tokenExpiryTimeLetmeask", tokenExpiryTime);
 }

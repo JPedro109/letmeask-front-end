@@ -36,9 +36,9 @@ export const Register = () => {
   
       await api
         .configApi
-        .post("/user/create", {
+        .post("/users", {
           email: email.value,
-          name: name.value,
+          username: name.value,
           password: password.value,
           passwordConfirm: passwordConfirm.value,
         })

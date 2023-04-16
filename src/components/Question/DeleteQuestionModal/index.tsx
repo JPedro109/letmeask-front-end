@@ -22,7 +22,7 @@ export const DeleteQuestionModal = ({ id }: QuestionModalTypes) => {
   const handleQuestionDelete = async () => {
     await api
       .configApi
-      .delete(`/question/${id}`)
+      .delete(`/questions/${id}`)
       .catch(({ response }) =>
         response
           ? notification.error(response.data.message)

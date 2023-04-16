@@ -24,7 +24,8 @@ export const QuestionContainer = ({ code }: QuestionContainerType) => {
     
         await api
             .configApi
-            .post(`/question/${code}`, {
+            .post(`/questions`, {
+                roomCode: code,
                 question: question
             })
             .catch(({ response }) =>
