@@ -15,7 +15,7 @@ export const VerifyEmailUpdate = () => {
       const handleVerifyEmailUpdate = async () => {
         await api
           .configApi
-          .patch(`/update-email${search}`)
+          .patch(`/users/email${search}`)
           .then(({ data }) => notification.success("E-mail atualizado com sucesso"))
           .catch(({ response }) =>
             response

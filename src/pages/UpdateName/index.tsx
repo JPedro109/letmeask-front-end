@@ -27,8 +27,8 @@ export const UpdateName = () => {
     
         await api
           .configApi
-          .patch("/update-name", {
-            name: name.value,
+          .patch("/users/username", {
+            username: name.value,
           })
           .then(() => {
             setFormValues({})

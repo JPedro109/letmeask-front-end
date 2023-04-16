@@ -24,7 +24,7 @@ export const CreateRoom = () => {
 
     e.preventDefault();
 
-    let { roomName } = e.target;
+    const { roomName } = e.target;
 
     if (!roomName.value) return notification.error("Preencha todos os campos");
 
@@ -32,12 +32,12 @@ export const CreateRoom = () => {
 
     await api
       .configApi
-      .post(`/room`, {
-        name: roomName.value,
+      .post(`/rooms`, {
+        roomName: roomName.value,
       })
       .then(({ data }) => {
         setFormValues({});
-        navigate(`/room/${data.response.code}`);
+        navigate(`/rooms/${data.code}`);
       })
       .catch(({ response }) =>
         response
@@ -55,9 +55,9 @@ export const CreateRoom = () => {
       if (mounted) {
         await api
           .configApi
-          .get(`/room-code`)
+          .get(`/rooms/managed-room`)
           .then(({ data }) => {
-            if (data.response) navigate(`/room/${data.response}`);
+            if (data) navigate(`/room/${data}`);
           })
           .catch(({ response }) =>
             response

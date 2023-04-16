@@ -30,7 +30,7 @@ export const ForgetPassword = () => {
 
     await api
       .configApi
-      .post("/user/password/send-token-password-recover", {
+      .post("/users/send-password-recovery-link", {
         email: email.value,
       })
       .then(() => {

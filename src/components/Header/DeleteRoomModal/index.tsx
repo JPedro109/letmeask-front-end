@@ -22,7 +22,7 @@ export const DeleteRoomModal = ({ code }: RoomModalTypes) => {
     const handleRemoveRoom = async () => {
         await api
             .configApi
-            .delete(`/room/${code}`)
+            .delete(`/rooms/${code}`)
             .then(() => {
                 notification.success("Sala deletada com sucesso");
                 navigate("/create-room");

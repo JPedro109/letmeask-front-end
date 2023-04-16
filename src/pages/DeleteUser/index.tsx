@@ -37,7 +37,7 @@ export const DeleteUser = () => {
     
         await api
         .configApi
-          .delete(`/user/delete`, {
+          .delete(`/users`, {
             data: {
               password: password.value,
               passwordConfirm: passwordConfirm.value,

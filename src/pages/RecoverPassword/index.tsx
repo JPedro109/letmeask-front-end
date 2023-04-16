@@ -34,7 +34,7 @@ export const RecoverPassword = () => {
 
     await api
       .configApi
-      .patch(`/user/password/password-recover${search}`, {
+      .patch(`/users/password-recover${search}`, {
         password: password.value,
         passwordConfirm: passwordConfirm.value,
       })

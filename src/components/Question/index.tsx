@@ -32,7 +32,7 @@ export const QuestionComponent = ({ questionObject, admin }: QuestionComponentTy
                 {
                     response ? (
                         <ContainerResponse>
-                            {response}
+                            {response.response}
                         </ContainerResponse>
                     ) : null
                 }

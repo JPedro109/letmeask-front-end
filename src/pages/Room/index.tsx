@@ -13,11 +13,10 @@ import { api } from "../../services/api";
 import { QuestionTypes } from "../../types";
 import { notification } from '../../utils/notification';
 import { LoadingBigGif } from '../../components/LoadingBigGif';
-import { ContainerBigGif } from '../../components/ContainerBigGif';
 
 export const Room = () => {
     const { code } = useParams();
-    const [admin, setAdmin] = useState(false);
+    const [admin, setAdmin] = useState<boolean | null>(null);
     const [roomName, setRoomName] = useState();
     const [questions, setQuestions] = useState([]);
     const [initialLoading, setInitialLoading] = useState<boolean>(true);
@@ -26,15 +25,16 @@ export const Room = () => {
     useEffect(() => {
         let mounted = true;
 
-        const handleRoomName = async () => {
+        const handleRoom = async () => {
             if (mounted) {
                 await api
                     .configApi
-                    .get(`/room/${code}`, {
+                    .get(`/rooms/${code}`, {
                     })
-                    .then(({ data }) => {
-                        setRoomName(data.response.name)
-                        data.response === code ? setAdmin(true) : null
+                    .then(({ data }) => {                  
+                        console.log(data);
+                        setRoomName(data.name);
+                        setQuestions(data.questions);
                     })
                     .catch(() => {
                         navigate("/create-room");
@@ -44,38 +44,26 @@ export const Room = () => {
         }
 
         const handleAdmin = async () => {
-            await api
-                .configApi
-                .get(`/room-code`)
-                .then(({ data }) => data.response === code ? setAdmin(true) : null)
-                .catch(() =>
-                    console.log("Erro no servidor")
-                );
-        };
-
-        const fetchQuestions = async () => {
-            if (mounted) {
+            if (mounted && admin == null) {
                 await api
                     .configApi
-                    .get(`/question/${code}`)
-                    .then(({ data }) => (setQuestions(data.response)))
-                    .catch(() =>
-                        console.log("Erro no servidor")
-                    );
+                    .get(`/rooms/managed-room`, {
+                    })
+                    .then(({ data }) => {
+                        data === code ? setAdmin(true) : setAdmin(false);
+                    })
+                    .catch(() => {
+                        notification.error("Essa sala não pode ser acessada");
+                    });
             }
-        };
-
-        if (initialLoading) {
-            handleAdmin();
-            handleRoomName();
-            fetchQuestions();
-            setTimeout(() => setInitialLoading(false), 600);
         }
 
+        handleAdmin();
+        handleRoom();
+
         setTimeout(() => {
-            handleRoomName();
-            fetchQuestions();
-        }, 800);
+            setInitialLoading(false);
+        }, 1000);
 
         return () => {
             mounted = false;
@@ -104,7 +92,7 @@ export const Room = () => {
                                 <QuestionComponent
                                     key={question.id}
                                     questionObject={question}
-                                    admin={admin}
+                                    admin={admin as boolean}
                                 />
                             )
                         ))
